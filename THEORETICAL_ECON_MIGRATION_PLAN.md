@@ -1,9 +1,12 @@
 # Theoretical Economics Migration Plan
-## pAI-Econ-claude → theoretical-economics-claude-skill
+## pAI-Econ-claude → pAI-Econ-codex
 
-> **Status:** Audit complete. This document defines the migration design. No prompt files have been modified yet.
+> **Status:** Codex port v1 is implemented. This document is retained as the
+> migration design record and provenance note.
 >
-> **Scope of this document:** Read-only design specification. Implementation proceeds phase by phase with researcher approval at each stage.
+> **Scope of this document:** Historical design specification. The publishable
+> Codex repository contains the active `SKILL.md`, `CODEX.md`, `agents/`,
+> `prompts/`, `model_library/`, `templates/`, `docs/`, and `examples/` trees.
 
 ---
 

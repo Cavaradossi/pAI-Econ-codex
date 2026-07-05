@@ -4,8 +4,9 @@ workspace/
 results/
 logs/
 
-# Local Claude Code settings (personal overrides, not team-wide)
+# Local Claude/Codex settings (personal overrides, not team-wide)
 .claude/settings.local.json
+.codex/
 
 # OS files
 .DS_Store
@@ -39,6 +40,3 @@ manuscript.log
 
 # Skill-generated research workspaces
 Exploration/
-
-# Local Codex state
-.codex/

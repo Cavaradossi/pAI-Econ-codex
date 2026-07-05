@@ -148,6 +148,18 @@ $pai-econ-codex "Your theoretical economics research idea"
 
 ---
 
+## Release Checks
+
+Before committing or publishing a new version, run at least:
+
+```powershell
+python -X utf8 scripts/release_check.py
+```
+
+This validates the Codex skill metadata, `agents/openai.yaml`, core repository layout, UTF-8 readability, Claude-only entry-point residue, generated workspace leakage, and local Git/remote status. On Windows, `python -X utf8` avoids false failures when Chinese Markdown would otherwise be decoded with the local legacy code page.
+
+---
+
 ## Use Cases
 
 pAI-Econ-codex supports theoretical ideas at different stages of maturity. You don't need to run the full pipeline every time — choose the entry point that fits your task.
@@ -694,7 +706,6 @@ pAI-Econ-codex/
 │   ├── academic-econ.latex               # Legacy PDF template (deprecated; pipeline now writes .tex directly)
 │   ├── author_style_guide_econ.md
 │   └── author_style_guide_default.md
-├── legacy/                               # Archived pAI/MSc pipeline files (reference only, not active)
 └── Exploration/                          # All project workspaces (auto-generated, contents not committed)
     └── Project_NNN_<ModelAbbrev>/
 ```

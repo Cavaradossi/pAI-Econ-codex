@@ -93,3 +93,30 @@ See `memory/feedback-pdf-style.md` for complete style rules.
 - Number new projects by scanning `Exploration/` with Bash `find`, not Glob
   (Glob has returned false negatives on this repo)
 - Pipeline skill: `pAI-Econ-codex` — see `SKILL.md`
+
+---
+
+## Windows PowerShell Encoding
+
+This repository uses UTF-8 Markdown with Chinese and English text. On Windows,
+always read and write text files with explicit UTF-8 encoding when using
+PowerShell:
+
+```powershell
+Get-Content -LiteralPath 'README.md' -Encoding UTF8
+Set-Content -LiteralPath $path -Value $text -Encoding utf8
+```
+
+Prefer PowerShell 7 (`pwsh.exe`) for automation. If a command includes Chinese
+text, JSON, multiline content, or complex quoting, write a temporary `.ps1`
+script and run it with `pwsh.exe -NoLogo -NoProfile -NonInteractive -File`.
+Do not diagnose UTF-8 files as corrupted until they have been read with
+explicit UTF-8 encoding.
+
+When running Python-based validators on Windows, force UTF-8 mode:
+
+```powershell
+python -X utf8 path\to\validator.py .
+```
+
+or set `PYTHONUTF8=1` for the current process before running the validator.

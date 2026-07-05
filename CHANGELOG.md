@@ -1,8 +1,34 @@
 # Changelog
 
-All notable changes to **pAI-Econ-claude** are documented here.
+All notable changes to **pAI-Econ-codex** are documented here.
 
 ---
+
+## [v1.3.0] — 2026-07-05
+
+### Added
+
+- Initial Codex port of the theoretical economics skill as `pai-econ-codex`.
+- `agents/openai.yaml` for Codex app UI metadata.
+- `CODEX.md` as the Codex-facing project rule file migrated from the Claude-era
+  standing instructions.
+- Release hygiene checks for validating the skill frontmatter, Codex metadata,
+  prompt/model-library structure, Git state, UTF-8 handling, and Claude-specific
+  migration residue.
+
+### Changed
+
+- Replaced Claude slash-command examples with Codex skill invocation:
+  `$pai-econ-codex`.
+- Kept the project display name as `pAI-Econ-codex` while using the normalized
+  lowercase skill trigger `pai-econ-codex`.
+- Removed Claude-only runtime entry points and generated research workspaces
+  from the publishable Codex repository.
+
+### Notes
+
+- The original author, pAI/MSc provenance, MIT license, and migration design
+  record are preserved.
 
 ## [v1.2.1] — 2026-07-03
 
@@ -19,9 +45,9 @@ All notable changes to **pAI-Econ-claude** are documented here.
 
 ### Changed
 
-- **Legacy pAI/MSc files archived to `legacy/`**: 29 unused ML-pipeline prompts (`01-persona-practical` … `33-explore-evaluator`) and 6 orchestrator docs (`execution-protocol`, `explore-mode`, `persona-post-review`, `pre-writeup-council`, `review-cycle`, `token-logging`) moved out of `prompts/` and `docs/` into `legacy/prompts/` and `legacy/docs/`, with a README explaining provenance. None were referenced by `SKILL.md` or the active prompts, and some used colliding terminology (the old "Phase 7b pre-writeup council" vs. the econ pipeline's Stage 7b Numerical Simulation). `prompts/` now contains exactly the 22 active stage/gate prompts. The maintained pAI/MSc pipeline lives in the separate `poggioai-msc-claude` skill.
+- **Legacy pAI/MSc files excluded from the Codex port**: unused ML-pipeline prompts and orchestrator docs were not carried into the publishable Codex repository. `prompts/` contains the active stage/gate prompts only.
 - **Welcome banner redesign**: the opening screen printed at skill invocation is now a framed box with the pipeline tagline, stage/gate/HiL stats, author names with affiliations, and the repo link, with the pAI/MSc acknowledgement set apart in a smaller footer compartment.
-- **`SKILL.md` hardening**: project numbering now explicitly requires a Bash listing (not Glob, which has returned false negatives on this repo); the stage-log gate format uses an explicit `<id>` placeholder (1, 1b, 2b, 2c, 2, 3, 4, 4b, 5); Stages 6 and 9 now carry an explicit reminder that any citation entering `candidate_propositions.md` or `economic_interpretation.md` must be web-VERIFIED (reused from `literature_positioning.md` or freshly verified), mirroring the standing rule in `CLAUDE.md`.
+- **`SKILL.md` hardening**: project numbering now explicitly requires a Bash listing (not Glob, which has returned false negatives on this repo); the stage-log gate format uses an explicit `<id>` placeholder (1, 1b, 2b, 2c, 2, 3, 4, 4b, 5); Stages 6 and 9 now carry an explicit reminder that any citation entering `candidate_propositions.md` or `economic_interpretation.md` must be web-VERIFIED (reused from `literature_positioning.md` or freshly verified), mirroring the standing rule now kept in `CODEX.md`.
 
 ---
 
@@ -43,7 +69,7 @@ All notable changes to **pAI-Econ-claude** are documented here.
 
 ### Fixed
 
-- **Model attribution in generated manuscripts**: `SKILL.md` and `CLAUDE.md` previously hardcoded `\small Claude Sonnet 4.6` in the LaTeX author block, so every manuscript claimed that model regardless of which Claude model actually ran the pipeline. The templates now use `<ACTUAL MODEL NAME>` with an explicit instruction to insert the model actually running the session (e.g., "Claude Fable 5") and never to copy the name from an earlier project's `.tex`.
+- **Model attribution in generated manuscripts**: the LaTeX author block no longer hardcodes a model name. The templates use `<ACTUAL MODEL NAME>` with an explicit instruction to insert the model actually running the session and never copy the name from an earlier project's `.tex`.
 
 ### Principles (unchanged by design)
 

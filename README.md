@@ -145,6 +145,18 @@ $pai-econ-codex "你的理论经济学研究想法"
 
 ---
 
+## 发布前检查
+
+在提交或发布新版本前，建议至少运行：
+
+```powershell
+python -X utf8 scripts/release_check.py
+```
+
+该检查会验证 Codex skill 元数据、`agents/openai.yaml`、核心目录结构、UTF-8 可读性、Claude 专属入口残留、生成工作区是否被误提交，以及本地 Git/远端状态。Windows 下使用 `python -X utf8` 是为了避免中文 Markdown 被默认 GBK 解码而误报。
+
+---
+
 ## 使用场景
 
 pAI-Econ-codex 支持不同成熟度的理论想法。你不必每次都跑完整 pipeline，可以根据任务选择合适入口。
@@ -695,7 +707,6 @@ pAI-Econ-codex/
 │   ├── academic-econ.latex               # 旧版 PDF 模板（已弃用，现直接写 .tex）
 │   ├── author_style_guide_econ.md
 │   └── author_style_guide_default.md
-├── legacy/                               # 原 pAI/MSc 流水线遗留文件（仅存档，非活跃流程）
 └── Exploration/                          # 所有项目工作区（自动生成，不提交内容）
     └── Project_NNN_<ModelAbbrev>/
 ```
