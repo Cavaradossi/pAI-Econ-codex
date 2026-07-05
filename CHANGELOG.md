@@ -4,6 +4,21 @@ All notable changes to **pAI-Econ-codex** are documented here.
 
 ---
 
+## [v1.3.1] — 2026-07-05
+
+### Added
+
+- `NOTICE.md` with an explicit provenance and attribution statement for the
+  Codex adaptation.
+- Prominent README / README_EN provenance sections linking to
+  [maxwell2732/pAI-Econ-claude](https://github.com/maxwell2732/pAI-Econ-claude).
+
+### Changed
+
+- Release checks now require the upstream attribution notice to remain present.
+
+---
+
 ## [v1.3.0] — 2026-07-05
 
 ### Added

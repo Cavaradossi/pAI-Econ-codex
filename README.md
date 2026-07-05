@@ -25,6 +25,16 @@
 > pAI stands for principal Agentic Investigator (Abdelmoneum, Beneventano, & Poggio, 2026).
 ---
 
+## 来源声明：Codex 适配版
+
+**pAI-Econ-codex 是 [maxwell2732/pAI-Econ-claude](https://github.com/maxwell2732/pAI-Econ-claude) 的 Codex 适配版。**
+
+原项目的理论经济学工作流设计、模型库方向、prompt 架构和 research-pipeline 思想归属于原作者与贡献者。本仓库的主要工作是将其迁移和整理为 Codex Skill 形态，包括 Codex 触发名、调用方式、`CODEX.md`、`agents/openai.yaml`、发布前检查与 Windows UTF-8 使用规范。知识产权归属和学术原创性应首先归于上游项目。
+
+更多来源说明见 [NOTICE.md](./NOTICE.md)。
+
+---
+
 ## 作者与更新
 
 **作者：**
@@ -42,6 +52,9 @@ Weilong Zhang / 章维龙（University of Cambridge）
 ## 致谢与来源
 
 本项目受 **pAI/MSc** 启发，并基于其 research pipeline 思想改造为理论经济学方向的 Codex Skill。
+
+Codex 适配来源：
+- [maxwell2732/pAI-Econ-claude](https://github.com/maxwell2732/pAI-Econ-claude)
 
 Original pAI/MSc:
 - Mahmoud Abdelmoneum

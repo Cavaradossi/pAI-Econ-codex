@@ -29,6 +29,22 @@
 
 ---
 
+## Provenance: Codex Adaptation
+
+**pAI-Econ-codex is a Codex adaptation of [maxwell2732/pAI-Econ-claude](https://github.com/maxwell2732/pAI-Econ-claude).**
+
+The original theoretical-economics workflow design, model-library direction,
+prompt architecture, and research-pipeline concept belong to the upstream
+authors and contributors. This repository's role is to adapt and package that
+work for the Codex skill environment, including the Codex trigger name,
+invocation format, `CODEX.md`, `agents/openai.yaml`, release checks, and Windows
+UTF-8 guidance. Intellectual-property attribution and academic originality
+should be credited first to the upstream project.
+
+See [NOTICE.md](./NOTICE.md) for the provenance note.
+
+---
+
 ## Authors
 
 **Authors:**
@@ -46,6 +62,9 @@ Weilong Zhang (University of Cambridge)
 ## Acknowledgements
 
 This project is inspired by **pAI/MSc** and adapts its research pipeline ideas into a Codex Skill for theoretical economics.
+
+Codex adaptation source:
+- [maxwell2732/pAI-Econ-claude](https://github.com/maxwell2732/pAI-Econ-claude)
 
 Original pAI/MSc:
 - Mahmoud Abdelmoneum

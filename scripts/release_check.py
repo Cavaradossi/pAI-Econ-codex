@@ -22,6 +22,7 @@ REQUIRED_FILES = [
     "CODEX.md",
     "README.md",
     "README_EN.md",
+    "NOTICE.md",
     "LICENSE",
     "CHANGELOG.md",
     "THEORETICAL_ECON_MIGRATION_PLAN.md",
@@ -201,6 +202,9 @@ def check_docs_and_residue(run: CheckRun) -> None:
     run.require("$pai-econ-codex" in readme and "$pai-econ-codex" in readme_en, "README files use Codex skill invocation")
     run.require("/theoretical-economics-claude-skill" not in readme + readme_en + skill, "Claude slash command removed from active docs")
     run.require("pAI-Econ-codex" in readme and "pAI-Econ-codex" in readme_en, "README files use Codex project name")
+    notice = read_text(ROOT / "NOTICE.md")
+    upstream = "https://github.com/maxwell2732/pAI-Econ-claude"
+    run.require(upstream in readme and upstream in readme_en and upstream in notice, "upstream pAI-Econ-claude attribution is prominent")
 
     for path in iter_text_files():
         text = read_text(path)
