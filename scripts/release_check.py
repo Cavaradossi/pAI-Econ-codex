@@ -30,6 +30,9 @@ REQUIRED_FILES = [
     "templates/state.json",
     ".gitignore",
     ".gitattributes",
+    ".agents/plugins/marketplace.json",
+    "plugins/pai-econ-codex/.codex-plugin/plugin.json",
+    "plugins/pai-econ-codex/skills/pai-econ-codex/SKILL.md",
 ]
 
 REQUIRED_DIRS = [
@@ -39,6 +42,9 @@ REQUIRED_DIRS = [
     "docs",
     "examples",
     "agents",
+    ".agents/plugins",
+    "plugins/pai-econ-codex",
+    "plugins/pai-econ-codex/skills/pai-econ-codex",
 ]
 
 REQUIRED_PROMPTS = [
@@ -81,6 +87,7 @@ ALLOWED_CLAUDE_REFERENCES = {
     "THEORETICAL_ECON_MIGRATION_PLAN.md",
     ".gitignore",
     "scripts/release_check.py",
+    "scripts/forward_test_demo.py",
 }
 
 TEXT_EXTENSIONS = {
@@ -195,6 +202,36 @@ def check_openai_yaml(run: CheckRun) -> None:
     run.require(isinstance(default_prompt, str) and "$pai-econ-codex" in default_prompt, "openai.yaml default prompt invokes $pai-econ-codex")
 
 
+def check_plugin_packaging(run: CheckRun) -> None:
+    plugin_root = ROOT / "plugins" / "pai-econ-codex"
+    plugin_json = json.loads(read_text(plugin_root / ".codex-plugin" / "plugin.json"))
+    run.require(plugin_json.get("name") == "pai-econ-codex", "plugin manifest name is pai-econ-codex")
+    run.require(plugin_json.get("skills") == "./skills/", "plugin manifest points to bundled skills directory")
+    run.require(plugin_json.get("repository") == "https://github.com/Cavaradossi/pAI-Econ-codex", "plugin manifest repository URL is set")
+    interface = plugin_json.get("interface", {})
+    run.require(interface.get("displayName") == "pAI-Econ-codex", "plugin display name is pAI-Econ-codex")
+    run.require(interface.get("category") == "Education", "plugin category is Education")
+    default_prompt = interface.get("defaultPrompt", [])
+    run.require(isinstance(default_prompt, list) and any("$pai-econ-codex" in item for item in default_prompt), "plugin default prompts invoke $pai-econ-codex")
+
+    marketplace = json.loads(read_text(ROOT / ".agents" / "plugins" / "marketplace.json"))
+    entries = marketplace.get("plugins", [])
+    entry = next((item for item in entries if item.get("name") == "pai-econ-codex"), None)
+    run.require(entry is not None, "repo marketplace contains pai-econ-codex entry")
+    if entry:
+        run.require(entry.get("source", {}).get("path") == "./plugins/pai-econ-codex", "marketplace source path points to plugin")
+        run.require(entry.get("policy", {}).get("installation") == "AVAILABLE", "marketplace installation policy is AVAILABLE")
+        run.require(entry.get("policy", {}).get("authentication") == "ON_INSTALL", "marketplace auth policy is ON_INSTALL")
+        run.require(entry.get("category") == "Education", "marketplace category is Education")
+
+    bundled_skill = plugin_root / "skills" / "pai-econ-codex"
+    mirrored_files = ["SKILL.md", "README.md", "README_EN.md", "NOTICE.md", "LICENSE", "CODEX.md"]
+    for item in mirrored_files:
+        run.require(read_text(ROOT / item) == read_text(bundled_skill / item), f"plugin mirrors {item}")
+    for prompt in REQUIRED_PROMPTS:
+        run.require((bundled_skill / "prompts" / prompt).is_file(), f"plugin mirrors prompts/{prompt}")
+
+
 def check_docs_and_residue(run: CheckRun) -> None:
     readme = read_text(ROOT / "README.md")
     readme_en = read_text(ROOT / "README_EN.md")
@@ -273,6 +310,7 @@ def main() -> int:
     check_required_layout(run)
     check_skill_metadata(run)
     check_openai_yaml(run)
+    check_plugin_packaging(run)
     check_docs_and_residue(run)
     check_state_template(run)
     check_utf8(run)

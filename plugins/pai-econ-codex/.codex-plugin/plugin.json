@@ -1,0 +1,38 @@
+{
+  "name": "pai-econ-codex",
+  "version": "1.4.0",
+  "description": "Codex plugin packaging the pAI-Econ-codex theoretical economics research skill.",
+  "author": {
+    "name": "pAI-Econ-codex maintainers",
+    "url": "https://github.com/Cavaradossi/pAI-Econ-codex"
+  },
+  "homepage": "https://github.com/Cavaradossi/pAI-Econ-codex",
+  "repository": "https://github.com/Cavaradossi/pAI-Econ-codex",
+  "license": "MIT",
+  "keywords": [
+    "codex-skill",
+    "economics",
+    "theoretical-economics",
+    "research-workflow",
+    "human-in-the-loop"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "pAI-Econ-codex",
+    "shortDescription": "Theoretical economics modeling workflow for Codex.",
+    "longDescription": "pAI-Econ-codex packages a human-in-the-loop theoretical economics pipeline for transforming empirical puzzles and mechanism intuitions into model matches, primitives, assumptions, propositions, proof sketches, counterexamples, and manuscript scaffolds. It is a Codex adaptation of maxwell2732/pAI-Econ-claude, with upstream intellectual attribution preserved.",
+    "developerName": "pAI-Econ-codex maintainers",
+    "category": "Education",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Cavaradossi/pAI-Econ-codex",
+    "defaultPrompt": [
+      "Use $pai-econ-codex to refine my economics puzzle.",
+      "Use $pai-econ-codex to audit my theoretical model.",
+      "Use $pai-econ-codex to build a manuscript scaffold."
+    ],
+    "brandColor": "#0A66C2"
+  }
+}

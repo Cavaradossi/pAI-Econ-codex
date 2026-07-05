@@ -4,6 +4,27 @@ All notable changes to **pAI-Econ-codex** are documented here.
 
 ---
 
+## [v1.4.0] — 2026-07-05
+
+### Added
+
+- Repo-local Codex plugin packaging under `plugins/pai-econ-codex/`.
+- Repo-local marketplace entry at `.agents/plugins/marketplace.json`.
+- Self-contained bundled skill resources inside
+  `plugins/pai-econ-codex/skills/pai-econ-codex/`.
+- `scripts/forward_test_demo.py`, a deterministic short-chain forward test
+  using `examples/quickstart-task.txt` against both the root skill and the
+  plugin-packaged skill.
+
+### Changed
+
+- README and README_EN now explicitly distinguish upstream originality from
+  Codex adaptation and release-engineering additions.
+- Release checks now validate plugin/marketplace packaging and bundled skill
+  resource mirroring.
+
+---
+
 ## [v1.3.1] — 2026-07-05
 
 ### Added
