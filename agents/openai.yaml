@@ -1,0 +1,3 @@
+display_name: pAI-Econ-codex
+short_description: Human-in-the-loop theoretical economics modeling pipeline for Codex.
+default_prompt: Use $pai-econ-codex to turn an economic intuition or empirical puzzle into a staged theoretical-economics research scaffold with model matching, assumptions, propositions, proof sketches, counterexamples, and quality gates.
